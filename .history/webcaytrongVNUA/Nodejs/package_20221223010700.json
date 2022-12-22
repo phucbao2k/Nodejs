@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/phucbao2k/Nodejs/issues"
   },
-  "homepage": "https://github.com/phucbao2k/Nodejs#readme",
+  "homepage": "https://github.com/phucbao2k/webcaytrongVNUA#readme",
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",

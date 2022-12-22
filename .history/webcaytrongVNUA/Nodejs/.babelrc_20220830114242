@@ -1,7 +1,0 @@
-{
-    "presets": [
-        "@babal/preset-env",
-        "babel-preset-env",
-        "babel-preset-react"
-    ]
-}

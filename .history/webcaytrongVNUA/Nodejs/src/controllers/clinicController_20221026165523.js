@@ -1,1 +1,0 @@
-import clinicService from '../s'

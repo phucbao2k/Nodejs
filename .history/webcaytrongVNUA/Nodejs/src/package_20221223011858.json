@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec  src/server.js",
+    "start": "nodemon  src/server.js",
     "dev": "nodemon --exec npm start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phucbao2k/Nodejs"
+    "url": "git+https://github.com/phucbao2k/webcaytrongVNUA.git"
   },
   "keywords": [
     "fullstack",
@@ -21,9 +21,9 @@
   "author": "TaBaoPhuc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/phucbao2k/Nodejs/issues"
+    "url": "https://github.com/phucbao2k/webcaytrongVNUA/issues"
   },
-  "homepage": "https://github.com/phucbao2k/Nodejs#readme",
+  "homepage": "https://github.com/phucbao2k/webcaytrongVNUA#readme",
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",

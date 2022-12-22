@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --exec src/server.js",
+    "start": "nodem --exec src/server.js",
     "dev": "nodemon --exec npm start"
   },
   "repository": {

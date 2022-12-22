@@ -50,7 +50,7 @@
     "@babel/node": "^7.18.10",
     "@babel/preset-env": "^7.12.10",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.20",
     "sequelize-cli": "^6.4.1"
   }
 }

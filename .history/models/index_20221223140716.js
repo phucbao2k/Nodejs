@@ -1,5 +1,5 @@
 'use strict';
-import {} from '../config/config.js';
+import {} from '../config/'
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

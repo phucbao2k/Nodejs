@@ -9,7 +9,6 @@ import Sequelize from 'sequelize';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const basename = path.basename(__filename);
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 

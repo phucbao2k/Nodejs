@@ -1,4 +1,4 @@
-import handbookService from "../services/handbookService.js";
+import handbookService from "../services/handbookService";
 let createHandbook = async (req, res) => {
     try {
         let infor = await handbookService.createHandbook(req.body);

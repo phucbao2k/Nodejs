@@ -1,7 +1,7 @@
-import handbookService from "../services/handbookService.js";
-let createHandbook = async (req, res) => {
+import specialtyService from "../services/specialtyService";
+let createSpecialty = async (req, res) => {
     try {
-        let infor = await handbookService.createHandbook(req.body);
+        let infor = await specialtyService.createSpecialty(req.body);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e);
@@ -13,9 +13,9 @@ let createHandbook = async (req, res) => {
     }
 }
 
-let getAllHandbook = async (req, res) => {
+let getAllSpecialty = async (req, res) => {
     try {
-        let infor = await handbookService.getAllHandbook(req.body);
+        let infor = await specialtyService.getAllSpecialty(req.body);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e);
@@ -26,9 +26,9 @@ let getAllHandbook = async (req, res) => {
 
     }
 }
-let getDetailHandbookById = async (req, res) => {
+let getDetailSpecialtyById = async (req, res) => {
     try {
-        let infor = await handbookService.getDetailHandbookById(req.query.id);
+        let infor = await specialtyService.getDetailSpecialtyById(req.query.id, req.query.location);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e);
@@ -39,42 +39,42 @@ let getDetailHandbookById = async (req, res) => {
 
     }
 }
-let handleGetAllHandbooks = async (req, res) => {
+let handleGetAllSpecialties = async (req, res) => {
     let id = req.query.id;
     if (!id) {
         return res.status(200).json({
             errCode: 1,
             errMessage: 'Missing required parameters!',
-            handbooks: []
+            specialties: []
         })
     }
-    let handbooks = await handbookService.showAllHandbooks(id);
+    let specialties = await specialtyService.showAllSpecialties(id);
     return res.status(200).json({
         errCode: 0,
         errMessage: 'OK',
-        handbooks
+        specialties
     })
 }
-let handleDeleteHandbook = async (req, res) => {
+let handleDeleteSpecialty = async (req, res) => {
     if (!req.body.id) {
         return res.status(200).json({
             errCode: 1,
             errMessage: "Missing required parameters!"
         })
     }
-    let message = await handbookService.deleteHandbook(req.body.id);
+    let message = await specialtyService.deleteSpecialty(req.body.id);
     return res.status(200).json(message);
 }
-let handleEditHandbook = async (req, res) => {
+let handleEditSpecialty = async (req, res) => {
     let data = req.body;
-    let message = await handbookService.updateHandbookData(data);
+    let message = await specialtyService.updateSpecialtyData(data);
     return res.status(200).json(message);
 }
 module.exports = {
-    createHandbook: createHandbook,
-    getAllHandbook: getAllHandbook,
-    getDetailHandbookById: getDetailHandbookById,
-    handleGetAllHandbooks: handleGetAllHandbooks,
-    handleDeleteHandbook: handleDeleteHandbook,
-    handleEditHandbook: handleEditHandbook
+    createSpecialty: createSpecialty,
+    getAllSpecialty: getAllSpecialty,
+    getDetailSpecialtyById: getDetailSpecialtyById,
+    handleGetAllSpecialties : handleGetAllSpecialties,
+    handleDeleteSpecialty: handleDeleteSpecialty,
+    handleEditSpecialty: handleEditSpecialty
 }

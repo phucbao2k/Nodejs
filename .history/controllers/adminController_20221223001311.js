@@ -1,4 +1,4 @@
-import adminService from '../services/adminService.js';
+import adminService from '../services/adminService';
 
 let handleGetAllBookings = async (req, res) => {
     let id = req.query.id;

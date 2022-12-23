@@ -1,6 +1,4 @@
 import db from '../models/index.js';
-import { createRequire } from 'module'
-const require = createRequire(import.meta.url);
 require('dotenv').config();
 import _ from 'lodash';
 const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;

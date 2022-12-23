@@ -2,15 +2,15 @@
   "name": "webcaytrongvnua",
   "version": "1.0.0",
   "description": "backend nodejs ttcn",
-  "type": "module",
-  "main": "server.js",
+ 
+  "export": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node server.js",
     "dev": "nodemon --exec npm start",
     "build": "webpack --config webpack.config.js"
   },
-  
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phucbao2k/Nodejs"

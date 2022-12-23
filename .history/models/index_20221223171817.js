@@ -64,14 +64,7 @@ fs.readdirSync(__dirname)
     // eslint-disable-next-line global-require,import/no-dynamic-require
     const model = {
       User: user(sequelize, Sequelize.DataTypes),
-      Allcode: allcode(sequelize, Sequelize.DataTypes),
-      Booking: booking(sequelize, Sequelize.DataTypes),
-      Clinic: clinic(sequelize, Sequelize.DataTypes),
-      Doctor_Infor: doctor_infor(sequelize, Sequelize.DataTypes),
-      Handbook: handbook(sequelize, Sequelize.DataTypes),
-      Markdown: markdown(sequelize, Sequelize.DataTypes),
-      Schedule: schedule(sequelize, Sequelize.DataTypes),
-      Speciality: speciality(sequelize, Sequelize.DataTypes),
+      Allcode: allcode(sequelize, Sequelize.DataTypes)
     }
     db[model.name] = model;
   

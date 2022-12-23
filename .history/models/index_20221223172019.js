@@ -68,10 +68,10 @@ fs.readdirSync(__dirname)
       Booking: booking(sequelize, Sequelize.DataTypes),
       Clinic: clinic(sequelize, Sequelize.DataTypes),
       Doctor_Infor: doctor_infor(sequelize, Sequelize.DataTypes),
-      Handbook: handbook(sequelize, Sequelize.DataTypes),
-      Markdown: markdown(sequelize, Sequelize.DataTypes),
-      Schedule: schedule(sequelize, Sequelize.DataTypes),
-      Speciality: speciality(sequelize, Sequelize.DataTypes),
+      Booking: booking(sequelize, Sequelize.DataTypes),
+      Booking: booking(sequelize, Sequelize.DataTypes),
+      Booking: booking(sequelize, Sequelize.DataTypes),
+      Booking: booking(sequelize, Sequelize.DataTypes),
     }
     db[model.name] = model;
   

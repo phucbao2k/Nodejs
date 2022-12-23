@@ -22,9 +22,7 @@ import clinic from './clinic.js';
 import doctor_infor from './doctor_infor.js';
 import handbook from './handbook.js';
 import markdown from './markdown.js';
-import schedule from './schedule.js';
-import speciality from './speciality.js';
-import user from './user.js';
+import sc
 let sequelize;
 
 // if (config.use_env_variable) {
@@ -62,17 +60,7 @@ fs.readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach(file => {
     // eslint-disable-next-line global-require,import/no-dynamic-require
-    const model = {
-      User: user(sequelize, Sequelize.DataTypes),
-      Allcode: allcode(sequelize, Sequelize.DataTypes),
-      Booking: booking(sequelize, Sequelize.DataTypes),
-      Clinic: clinic(sequelize, Sequelize.DataTypes),
-      Doctor_Infor: doctor_infor(sequelize, Sequelize.DataTypes),
-      Handbook: handbook(sequelize, Sequelize.DataTypes),
-      Markdown: markdown(sequelize, Sequelize.DataTypes),
-      Schedule: schedule(sequelize, Sequelize.DataTypes),
-      Speciality: speciality(sequelize, Sequelize.DataTypes),
-    }
+    const model = require(path.join(__dirname, file)).default(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   
   });

@@ -71,7 +71,7 @@ fs.readdirSync(__dirname)
       Handbook: handbook(sequelize, Sequelize.DataTypes),
       Markdown: markdown(sequelize, Sequelize.DataTypes),
       Schedule: schedule(sequelize, Sequelize.DataTypes),
-      Speciality: speciality(sequelize, Sequelize.DataTypes),
+      Specialty: booking(sequelize, Sequelize.DataTypes),
     }
     db[model.name] = model;
   

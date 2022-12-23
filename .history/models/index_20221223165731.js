@@ -7,7 +7,7 @@ import fs from 'fs'
 // const path = require('path');
 import path from 'path';
 // const Sequelize = require('sequelize');
-import { Sequelize, DataTypes } from "sequelize";
+import Sequelize from 'sequelize';
 const __filename = fileURLToPath(import.meta.url);
 const basename = path.basename(__filename);
 import { dirname } from 'path';
@@ -16,15 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const env = process.env.NODE_ENV || 'development';
 // const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
-import allcode from './allcode.js';
-import booking from './booking.js';
-import clinic from './clinic.js';
-import doctor_infor from './doctor_infor.js';
-import handbook from './handbook.js';
-import markdown from './markdown.js';
-import schedule from './schedule.js';
-import speciality from './speciality.js';
-import user from './user.js';
+
 let sequelize;
 
 // if (config.use_env_variable) {
@@ -62,19 +54,8 @@ fs.readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach(file => {
     // eslint-disable-next-line global-require,import/no-dynamic-require
-    const model = {
-      User: user(sequelize, Sequelize.DataTypes),
-      Allcode: allcode(sequelize, Sequelize.DataTypes),
-      Booking: booking(sequelize, Sequelize.DataTypes),
-      Clinic: clinic(sequelize, Sequelize.DataTypes),
-      Doctor_Infor: doctor_infor(sequelize, Sequelize.DataTypes),
-      Handbook: handbook(sequelize, Sequelize.DataTypes),
-      Markdown: markdown(sequelize, Sequelize.DataTypes),
-      Schedule: schedule(sequelize, Sequelize.DataTypes),
-      Speciality: speciality(sequelize, Sequelize.DataTypes),
-    }
-    db[model.name] = model;
-  
+    // 
+    
   });
 // module.Module._extensions['.js'] = function (module, __dirname) {
 //   module._compile(fs.readdirSync(__dirname)

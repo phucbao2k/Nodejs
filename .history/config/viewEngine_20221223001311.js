@@ -4,3 +4,4 @@ export function configViewEngine(app) {
     app.set("view engine", "ejs", "cjs");
     app.set("views", "./src/views");
 }
+//

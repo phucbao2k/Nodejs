@@ -1,6 +1,6 @@
 import db from '../models/index.js';
 require('dotenv').config();
-import emailService from '../services/emailService.js';
+import emailService from '../services/emailService';
 let getAllBookingForAdmin = ( date) => {
     return new Promise(async (resolve, reject) => {
         try {

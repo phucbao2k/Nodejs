@@ -1,4 +1,4 @@
-import db from "../models/index.js";
+import db from "../models/index";
 import bcrypt from 'bcryptjs';
 //bcrypt is an npm module that simplifies tạo và băm mật khẩu
 const salt = bcrypt.genSaltSync(10);

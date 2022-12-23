@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+require('dotenv').config(); // this is important!
 export default {
     "development": {
         "username": process.env.DB_USERNAME,

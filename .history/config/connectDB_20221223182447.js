@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url);
-
 require('dotenv').config();
 // Option 2: Passing parameters separately (other dialects)
 const sequelize = new Sequelize(
@@ -34,7 +33,7 @@ let connectDB = async () => {
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-  
+    mysqlssh.close();
   }
 }
 export default connectDB;

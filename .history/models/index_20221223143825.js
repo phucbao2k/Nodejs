@@ -10,6 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const basename = path.basename(__filename);
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const env = process.env.NODE_ENV || 'development';
 // const config = require(__dirname + '/../config/config.json')[env];
@@ -25,7 +26,7 @@ let sequelize;
 const customizeConfig = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  dialect: 'mysql',
+  dialect: 'postgres',
   logging: false,
   dialectOptions:
     process.env.DB_SSL === 'true' ?

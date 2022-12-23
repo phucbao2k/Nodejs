@@ -27,7 +27,7 @@ let sequelize;
 const customizeConfig = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  dialect: process.env.DB_DIALECT,
+  dialect: 'mysql',
   logging: false,
   dialectOptions:
     process.env.DB_SSL === 'true' ?

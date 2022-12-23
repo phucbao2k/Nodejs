@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "backend nodejs ttcn",
  
-  "main": "server.js",
+  "export": "./server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node server.js",

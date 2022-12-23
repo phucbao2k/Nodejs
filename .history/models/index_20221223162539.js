@@ -27,7 +27,7 @@ let sequelize;
 const customizeConfig = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  dialect: process.env.DB_DIALECT,
+  dialect: 'mysql',
   logging: false,
   dialectOptions:
     process.env.DB_SSL === 'true' ?
@@ -50,22 +50,14 @@ sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   customizeConfig);
 const module = require('module');
-fs.readdirSync(__dirname)
-  .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach(file => {
-    // eslint-disable-next-line global-require,import/no-dynamic-require
-    const model = require(path.join(__dirname, file)).default(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-// module.Module._extensions['.js'] = function (module, __dirname) {
-//   module._compile(fs.readdirSync(__dirname)
-//     .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-//     .forEach(file => {
-//       // eslint-disable-next-line global-require,import/no-dynamic-require
-//       const model = require(path.join(__dirname, file)).default(sequelize, Sequelize.DataTypes);
-//       db[model.name] = model;
-//     }));
-// };
+// fs.readdirSync(__dirname)
+//   .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+//   .forEach(file => {
+//     // eslint-disable-next-line global-require,import/no-dynamic-require
+//     const model = require(path.join(__dirname, file)).default(sequelize, Sequelize.DataTypes);
+//     db[model.name] = model;
+//   });
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

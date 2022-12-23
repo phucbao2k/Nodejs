@@ -10,7 +10,6 @@
     "dev": "nodemon --exec npm start",
     "build": "webpack --config webpack.config.js"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phucbao2k/Nodejs"

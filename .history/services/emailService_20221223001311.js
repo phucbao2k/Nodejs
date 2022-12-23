@@ -289,7 +289,7 @@ let sendReBooking = async (dataSend) => {
         }
     })
 }
-export default {
+module.exports = {
     sendSimpleEmail: sendSimpleEmail,
     sendAttachment: sendAttachment,
     sendCancelAttachment: sendCancelAttachment,

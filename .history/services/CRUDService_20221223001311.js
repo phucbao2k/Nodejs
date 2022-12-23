@@ -108,7 +108,7 @@ let deleteUserByID = (userId) => {
 }
 
 
-export default {
+module.exports = {
     createNewUser: createNewUser,
     getAllUsers: getAllUsers,
     getUserInfoById: getUserInfoById,

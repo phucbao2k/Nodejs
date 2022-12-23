@@ -108,7 +108,7 @@ let deleteUserByID = (userId) => {
 }
 
 
-export default {
+export default = {
     createNewUser: createNewUser,
     getAllUsers: getAllUsers,
     getUserInfoById: getUserInfoById,

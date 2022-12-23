@@ -1,4 +1,4 @@
-'use strict';
+v
 import { Model } from 'sequelize';
 export default (sequelize, DataTypes) => {
   class Handbook extends Model {

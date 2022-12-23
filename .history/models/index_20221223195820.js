@@ -1,4 +1,3 @@
-'use strict';
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url);
 require('dotenv').config();
@@ -94,4 +93,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

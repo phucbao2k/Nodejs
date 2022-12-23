@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url);
 require('dotenv').config();

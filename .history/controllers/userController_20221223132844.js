@@ -1,4 +1,4 @@
-import userService from "../services/userService.js";
+import userService from "../services/userService.j";
 let handleLogin = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;

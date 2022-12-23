@@ -1,7 +1,6 @@
-
+import express from "express";
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url);
-import express from "express";
 import bodyParser from "body-parser";
 import { configViewEngine } from "./config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';

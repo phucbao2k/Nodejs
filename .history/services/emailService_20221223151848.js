@@ -1,5 +1,4 @@
-import { createRequire } from 'module'
-const require = createRequire(import.meta.url);
+
 require('dotenv').config();
 import nodemailer from 'nodemailer';
 let sendSimpleEmail = async(dataSend) => {

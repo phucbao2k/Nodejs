@@ -1,7 +1,7 @@
 {
   "name": "webcaytrongvnua",
   "version": "1.0.0",
-  "description": "backend nodejs ttcn",
+  "description": "backend nodejs kltn",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,7 @@
     "fullstack",
     "nodejs",
     "express",
-    "ttcn"
+    "kltn"
   ],
   "author": "TaBaoPhuc",
   "license": "ISC",

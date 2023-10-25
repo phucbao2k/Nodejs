@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { configViewEngine } from "../src/config/viewEngine.js";
-import { initWebRoutes } from '../src/web.js';
-import connectDB from "../src/config/connectDB.js";
+import { configViewEngine } from "./config/viewEngine.js";
+import { initWebRoutes } from './route/web.js';
+import connectDB from "./config/connectDB.js";
 import cors from 'cors';
 require('dotenv').config();
 let app = express();
@@ -18,4 +18,3 @@ app.listen(port, () => {
     //callback
     console.log("port is " + port);
 })
-

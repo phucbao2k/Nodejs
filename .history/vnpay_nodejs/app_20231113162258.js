@@ -1,5 +1,5 @@
 import express from 'express';
-import {} from 'express';
+import {} from 'express'
 import { join } from 'path';
 import favicon from 'serve-favicon';
 import logger from 'morgan';

@@ -1,4 +1,4 @@
-import express, {static as static_} from "express";
+import express, {static} from "express";
 import { join } from 'path';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
@@ -18,7 +18,7 @@ app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(static_(join(__dirname, 'public')));
+app.use((join(__dirname, 'public')));
 
 app.use('/order', order);
 

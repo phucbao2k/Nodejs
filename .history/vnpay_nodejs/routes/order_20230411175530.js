@@ -4,11 +4,11 @@
 
 
 
-import { Router } from 'express';
-let router = Router();
-import $ from 'jquery';
-import request from 'request';
-import moment from 'moment';
+let express = require('express');
+let router = express.Router();
+let $ = require('jquery');
+const request = require('request');
+const moment = require('moment');
 
 
 router.get('/', function(req, res, next){
@@ -317,4 +317,4 @@ function sortObject(obj) {
     return sorted;
 }
 
-export default router;
+module.exports = router;

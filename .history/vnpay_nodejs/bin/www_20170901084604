@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app').default;
+var app = require('../app');
 var debug = require('debug')('demopaymentnodb:server');
 var http = require('http');
 

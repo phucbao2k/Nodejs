@@ -1,14 +1,16 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { configViewEngine } from "./src/config/viewEngine.js";
+import { configViewEngine } from "src";
 import { initWebRoutes } from './route/web.js';
-import connectDB from "./src/config/connectDB.js";
+import connectDB from "./config/connectDB.js";
 import _ from "lodash";
+import db from "./models/index.js";
+import emailService from "./services/emailService";
 const paypal = require('paypal-rest-sdk');
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': 'AaF0nqk9wLWDsiok0qUMDlbwtjziLX6IZyIEP00-nnG-KMQq-xj-IxtB2uYlCGk-Rgyz9pxjIGwGRybn',
-    'client_secret': 'EEmJIghDPTWMxq6oWojSvyk6M2B0AuYURWrJ0R9TQDzx8uCgwRcN2DRKalBKILB7EXqOJV1ND0V_mBzA'
+    'client_id': 'AXQsQrZpknOZlFrjSpEOgoDi7Ab81ji97cC0d6oIihV44eQkc-Ke0s1hRCqhAlk9PDjmPfw5LUalJt0B',
+    'client_secret': 'ENo_RjBRdFZ4xbFKoZjqDlztCKGiXCGvPz6Zd1QSbK6h5DMrJtUJrqf3Ro43dQGkAqpvmjCDWaSOijoi'
 });
 import cors from 'cors';
 require('dotenv').config();

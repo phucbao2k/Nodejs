@@ -65,7 +65,9 @@ let deleteCRUD = async (req, res) => {
     }
 
 }
-
+let getpaymentPage = (req, res) => {
+    return res.render('index.ejs');
+}
 let getSuccessPage = (req, res) => {
     return res.render('success.ejs');
 }
@@ -91,7 +93,7 @@ export default {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
-  
+    getpaymentPage: getpaymentPage,
     getSuccessPage: getSuccessPage,
     getCancelPage: getCancelPage
 };

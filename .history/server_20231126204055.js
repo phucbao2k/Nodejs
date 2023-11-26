@@ -8,7 +8,7 @@ const paypal = require('paypal-rest-sdk');
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'AaF0nqk9wLWDsiok0qUMDlbwtjziLX6IZyIEP00-nnG-KMQq-xj-IxtB2uYlCGk-Rgyz9pxjIGwGRybn',
-    'client_secret': 'EEmJIghDPTWMxq6oWojSvyk6M2B0AuYURWrJ0R9TQDzx8uCgwRcN2DRKalBKILB7EXqOJV1ND0V_mBzA'
+    'client_secret': 'ENo_RjBRdFZ4xbFKoZjqDlztCKGiXCGvPz6Zd1QSbK6h5DMrJtUJrqf3Ro43dQGkAqpvmjCDWaSOijoi'
 });
 import cors from 'cors';
 require('dotenv').config();

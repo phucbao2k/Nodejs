@@ -91,7 +91,7 @@ export default {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
-  
+    getpaymentPage: getpaymentPage,
     getSuccessPage: getSuccessPage,
     getCancelPage: getCancelPage
 };

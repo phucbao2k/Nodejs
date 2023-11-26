@@ -65,12 +65,14 @@ let deleteCRUD = async (req, res) => {
     }
 
 }
-
+let getpaymentPage = (req, res) => {
+    return res.render('test/index.ejs');
+}
 let getSuccessPage = (req, res) => {
-    return res.render('success.ejs');
+    return res.render('test/success.ejs');
 }
 let getCancelPage = (req, res) => {
-    return res.render('cancel.ejs');
+    return res.render('test/cancel.ejs');
 }
 //  try {
 // let data = await db.User.findAll();
@@ -91,7 +93,7 @@ export default {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
-  
+    getpaymentPage: getpaymentPage,
     getSuccessPage: getSuccessPage,
     getCancelPage: getCancelPage
 };

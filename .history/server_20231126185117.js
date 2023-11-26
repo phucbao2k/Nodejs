@@ -36,7 +36,7 @@ paypal.configure({
 
 var items = JSON.parse(fs.readFileSync('src/views/items.json'));
 var total = 0;
-for (let i = 0; i < items.length; i++) {
+for (i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;
 }
 
@@ -70,7 +70,7 @@ app.post('/pay', function (req, res) {
         if (error) {
             res.render('cancle');
         } else {
-            for (let i = 0; i < payment.links.length; i++) {
+            for (i = 0; i < payment.links.length; i++) {
                 if (payment.links[i].rel === 'approval_url') {
                     res.redirect(payment.links[i].href);
                 }

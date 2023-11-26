@@ -4,7 +4,7 @@ import { configViewEngine } from "./src/config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';
 import connectDB from "./src/config/connectDB.js";
 import cors from 'cors';
-import paypal from 'paypal-rest-sdk';
+import { paypal } from 'paypal-rest-sdk';
 import fs from 'fs';
 import path from 'path';
 require('dotenv').config();
@@ -36,7 +36,7 @@ paypal.configure({
 
 var items = JSON.parse(fs.readFileSync('src/views/items.json'));
 var total = 0;
-for (let i = 0; i < items.length; i++) {
+for (i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;
 }
 

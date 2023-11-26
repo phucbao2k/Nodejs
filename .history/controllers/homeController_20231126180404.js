@@ -18,13 +18,13 @@ let getCRUD = (req, res) => {
     return res.render('test/crud.ejs');
 }
 let getpaymentPage = (req, res) => {
-    return res.render('views/index.ejs');
+    return res.render('views/index.handlebars');
 }
 let getSuccessPage = (req, res) => {
-    return res.render('views/success.ejs');
+    return res.render('views/success.handlebars');
 }
 let getCanclePage = (req, res) => {
-    return res.render('views/cancel.ejs');
+    return res.render('views/can.handlebars');
 }
 //  try {
 // let data = await db.User.findAll();
@@ -116,7 +116,4 @@ export default {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
-    getpaymentPage: getpaymentPage,
-    getSuccessPage: getSuccessPage,
-    getCanclePage: getCanclePage
 };

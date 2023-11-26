@@ -4,8 +4,10 @@ import { configViewEngine } from "./src/config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';
 import connectDB from "./src/config/connectDB.js";
 import cors from 'cors';
-import paypal from 'paypal-rest-sdk';
+import { paypal } from 'paypal-rest-sdk';
 import fs from 'fs';
+import handlebars from 'express-handlebars';
+import engine
 import path from 'path';
 require('dotenv').config();
 let app = express();
@@ -24,8 +26,10 @@ app.listen(port, () => {
 
 
 app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
-    res.render('index.ejs');
+    res.render('index.handlebars');
 })
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -34,14 +38,14 @@ paypal.configure({
 });
 
 
-var items = JSON.parse(fs.readFileSync('src/views/items.json'));
+var items = JSON.parse(fs.readFileSync('items.json'));
 var total = 0;
-for (let i = 0; i < items.length; i++) {
+for (i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;
 }
 
 app.get('/thanh-toan', function (req, res) {
-    res.render('server');
+    res.render('index');
 });
 
 app.post('/pay', function (req, res) {

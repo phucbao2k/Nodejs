@@ -19,8 +19,7 @@ export function initWebRoutes(app) {
     router.post('/put-crud', homeController.putCRUD);
     router.get('/delete-crud', homeController.deleteCRUD);
     router.get('/thanh-toan', homeController.getpaymentPage);
-    router.get('/success', homeController.getSuccessPage);
-    router.get('/cancel', homeController.getCanclePage);
+    router.get('/success', homeController.getEditCRUD);
     //login
     router.post('/api/login', userController.handleLogin);
     //user

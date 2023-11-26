@@ -4,28 +4,31 @@ import { configViewEngine } from "./src/config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';
 import connectDB from "./src/config/connectDB.js";
 import cors from 'cors';
-import paypal from 'paypal-rest-sdk';
-import fs from 'fs';
-import path from 'path';
 require('dotenv').config();
-let app = express();
-app.use(cors({ origin: true }));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-configViewEngine(app);
-initWebRoutes(app);
-connectDB();
-let port = process.env.PORT || 7070;
+// let app = express();
+// app.use(cors({ origin: true }));
+// app.use(bodyParser.json({ limit: '50mb' }));
+// app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+// configViewEngine(app);
+// initWebRoutes(app);
+// connectDB();
+// let port = process.env.PORT || 7070;
 
-app.listen(port, () => {
+// app.listen(port, () => {
   
-    console.log("port is " + port);
-})
-
-
-app.set('views', path.join(__dirname, 'views'));
-app.get('/', function (req, res) {
-    res.render('index.ejs');
+//     console.log("port is " + port);
+// })
+import { express } from 'express';
+import { paypal } from 'paypal-rest-sdk';
+import fs from 'fs';
+import exphdbs from 'express-handlebars';
+import path from 'path';
+let app_payment = express();
+app_payment.set('views', path.join(__dirname, 'views'));
+app_payment.engine('handlebars', exphdbs({ defaultLayout: 'main' }));
+app_payment.set('view engine', 'handlebars');
+app_payment.get('/', function (req, res) {
+    res.render('index.handlebars');
 })
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -34,17 +37,17 @@ paypal.configure({
 });
 
 
-var items = JSON.parse(fs.readFileSync('src/views/items.json'));
+var items = JSON.parse(fs.readFileSync('items.json'));
 var total = 0;
-for (let i = 0; i < items.length; i++) {
+for (i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;
 }
 
-app.get('/thanh-toan', function (req, res) {
-    res.render('server');
+app_payment.get('/thanh-toan', function (req, res) {
+    res.render('index');
 });
 
-app.post('/pay', function (req, res) {
+app_payment.post('/pay', function (req, res) {
     const create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -79,10 +82,10 @@ app.post('/pay', function (req, res) {
     });
 
 });
-app.get('/cancle', function (req, res) {
+app_payment.get('/cancle', function (req, res) {
     res.render('cancle');
 });
-app.get('/success', (req, res) => {
+app_payment.get('/success', (req, res) => {
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
 
@@ -106,9 +109,9 @@ app.get('/success', (req, res) => {
     });
 });
 
-app.get('/cancel', (req, res) => res.send('Cancelled'));
+app_payment.get('/cancel', (req, res) => res.send('Cancelled'));
 
-app.listen(7070, function () {
+app_payment.listen(7070, function () {
     console.log(total);
 });
 

@@ -24,7 +24,7 @@ let getSuccessPage = (req, res) => {
     return res.render('views/success.ejs');
 }
 let getCanclePage = (req, res) => {
-    return res.render('views/cancel.ejs');
+    return res.render('views/cancle.ejs');
 }
 //  try {
 // let data = await db.User.findAll();

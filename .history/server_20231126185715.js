@@ -15,7 +15,12 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 configViewEngine(app);
 initWebRoutes(app);
 connectDB();
+let port = process.env.PORT || 7070;
 
+app.listen(port, () => {
+  
+    console.log("port is " + port);
+})
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -103,10 +108,7 @@ app.get('/success', (req, res) => {
 
 app.get('/cancel', (req, res) => res.send('Cancelled'));
 
-let port = process.env.PORT || 7070;
-
-app.listen(port, () => {
-
-    console.log("port is " + port);
-})
+app.listen(7070, function () {
+    console.log(total);
+});
 

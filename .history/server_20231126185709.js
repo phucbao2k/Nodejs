@@ -103,10 +103,7 @@ app.get('/success', (req, res) => {
 
 app.get('/cancel', (req, res) => res.send('Cancelled'));
 
-let port = process.env.PORT || 7070;
-
-app.listen(port, () => {
-
-    console.log("port is " + port);
-})
+app.listen(7070, function () {
+    console.log(total);
+});
 

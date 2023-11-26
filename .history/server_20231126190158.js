@@ -20,7 +20,7 @@ connectDB();
 
 app.set('views', path.join(__dirname, 'views'));
 app.get('/', function (req, res) {
-    res.render('test/index.ejs');
+    res.render('src/views/index.ejs');
 })
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -29,7 +29,7 @@ paypal.configure({
 });
 
 
-var items = JSON.parse(fs.readFileSync('items.json'));
+var items = JSON.parse(fs.readFileSync('src/views/items.json'));
 var total = 0;
 for (let i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;

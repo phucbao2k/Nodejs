@@ -23,7 +23,7 @@ let getpaymentPage = (req, res) => {
 let getSuccessPage = (req, res) => {
     return res.render('test/success.ejs');
 }
-let getCancelPage = (req, res) => {
+let getCanclePage = (req, res) => {
     return res.render('test/cancel.ejs');
 }
 //  try {
@@ -118,5 +118,5 @@ export default {
     deleteCRUD: deleteCRUD,
     getpaymentPage: getpaymentPage,
     getSuccessPage: getSuccessPage,
-    getCancelPage: getCancelPage
+    getCanclePage: getCanclePage
 };

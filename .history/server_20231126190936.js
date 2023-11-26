@@ -29,7 +29,7 @@ paypal.configure({
 });
 
 
-var items = JSON.parse(fs.readFileSync('items.json'));
+var items = JSON.parse(fs.readFileSync('test/items.json'));
 var total = 0;
 for (let i = 0; i < items.length; i++) {
     total += parseFloat(items[i].price) * items[i].quantity;

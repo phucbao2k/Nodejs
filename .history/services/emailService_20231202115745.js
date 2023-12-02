@@ -56,7 +56,7 @@ let getBodyHTMLEmail = (dataSend) => {
         <div>
         <a href=${dataSend.redirectLink} target="_blank">Click here</a>
         </div>
-        <div>You can manage your medical schedule through the account management section after confirming the schedule of medical examination for you</div>
+        <div>You can manage your tree's medical schedule through the account management section after confirming the schedule of medical examination for the tree</div>
          <div>Thank you</div>
          `
 
@@ -110,9 +110,9 @@ let getBodyHTMLEmailCancelRemedy = (dataSend) => {
             `
         <h3> Hello ${dataSend.patientName} !</h3 >
         <p>You received this message because you booked an online medical appointment on web khamchuabenh</p>
-     <p>We're sorry, but our doctor/clinic is currently unable to process your request on time. You can schedule a medical examination for you at a time or another doctor available on the website. Wish you sympathize</p>
+     <p>We're sorry, but our doctor/clinic is currently unable to process your request on time. You can schedule a medical examination for the tree at a time or another doctor available on the website. Wish you sympathize</p>
        <p>Reason: The doctor is full of appointments at this time</p>
-        <div>You can manage your medical schedule through the account management section</div>
+        <div>You can manage your tree's medical schedule through the account management section</div>
          <div>Thank you!</div>
          `
 
@@ -141,7 +141,7 @@ let getBodyHTMLEmailCancelPatientRemedy = (dataSend) => {
         <p>You received this message because you booked an online medical appointment on web khamchuabenh</p>
      <p>You have successfully canceled your appointment! Looking forward to serving you next time!</p>
      
-        <div>You can manage your medical schedule through the account management section</div>
+        <div>You can manage your tree's medical schedule through the account management section</div>
          <div>Thank you!</div>
          `
 
@@ -154,8 +154,8 @@ let getBodyHTMLEmailReRemedy = (dataSend) => {
         result =
             `
         <h3> Xin chào ${dataSend.patientName} !</h3 >
-        <p>Bạn nhận được thư này vì đã thanh toán và nhận được phiếu khám thành công khi tới cơ sở y tế</p>
-     <p>Rất tiếc!Bác sĩ của chúng tôi chưa thể khám cho bạn như đúng hẹn</p>
+        <p>Bạn nhận được thư này vì đã thanh toán và nhận được phiếu khám thành công khi tới cơ sở chăm sóc cây trồng</p>
+     <p>Rất tiếc!Bác sĩ của chúng tôi chưa thể khám  của bạn như đúng hẹn</p>
      <p>Lý do: Bác sĩ có việc đột xuất</p>
      <p>Đừng lo lắng. Hãy giữ lại phiếu khám. Bạn có thể đăng kí lại vào thời gian khác và được khám lại  miễn phí vào lần sau</p>
      <p>Nếu bạn muốn hoàn tiền,hãy giữ lại phiếu khám, biên lai thu tiền, và hãy liên hệ với chúng tôi trong thời gian sớm nhất. Rất hân hạnh được phục vụ</p>
@@ -170,13 +170,13 @@ let getBodyHTMLEmailReRemedy = (dataSend) => {
         result =
             `
       <h3> Hello ${dataSend.patientName} !</h3 >
-         <p>You received this letter because you paid and received a successful medical checkup when you went to the medical facility</p>
-      <p>Sorry!Our doctor could not examine for you as scheduled</p>
+         <p>You received this letter because you paid and received a successful medical checkup when you went to the plant care facility</p>
+      <p>Sorry!Our doctor could not examine your tree as scheduled</p>
       <p>Reason: The doctor has an unexpected job</p>
-      <p>Don't worry. Please keep the exam sheet. You can re-register at another time and get a free medical check next time</p>
+      <p>Don't worry. Please keep the exam sheet. You can re-register at another time and get a free tree check next time</p>
       <p>If you want a refund, please keep the medical record, the payment receipt, and contact us as soon as possible. Pleased to serve</p>
       <p>Hotline: 0981943577 - Support email: phuclongchausa912@gmail.com</p>
-        <div>You can manage your medical schedule through your account management</div>
+        <div>You can manage your tree's medical schedule through your account management</div>
           <div>Thank you very much!</div>
          `
 

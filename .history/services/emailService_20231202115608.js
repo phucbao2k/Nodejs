@@ -15,7 +15,7 @@ let sendSimpleEmail = async(dataSend) => {
     let info = await transporter.sendMail({
         from:'"Phúc vnua" <baophucta2k@gmail.com>',
         to: dataSend.receiverEmail,
-        subject: "Thông tin đặt lịch khám bệnh cho cây",
+        subject: "Thông tin đặt lịch khám bệnh ",
         html: getBodyHTMLEmail(dataSend),
      
 
@@ -38,7 +38,7 @@ let getBodyHTMLEmail = (dataSend) => {
         <div>
         <a href=${dataSend.redirectLink} target="_blank">Click here</a>
         </div>
-<div>Bạn có thể quản lý lịch khám bệnh cho cây của mình qua mục quản lý tài khoản sau khi xác nhận lịch khám bệnh cho cây</div>
+<div>Bạn có thể quản lý lịch khám bệnh  của mình qua mục quản lý tài khoản sau khi xác nhận lịch khám bệnh </div>
          <div>Xin chân thành cảm ơn</div>
          `
         
@@ -97,9 +97,9 @@ let getBodyHTMLEmailCancelRemedy = (dataSend) => {
             `
         <h3> Xin chào ${dataSend.patientName} !</h3 >
         <p>Bạn nhận được thư này vì đã đặt lịch khám bệnh online trên web khamchuabenhchocayvnua</p>
-     <p>Rất tiếc nhưng hiện tại bác sĩ/phòng khám của chúng tôi không thể xử lý yêu cầu khám bệnh của quý khách đúng hẹn. Qúy khách có thể đặt lịch khám bệnh cho cây vào thời điểm hoặc bác sĩ khác có trên website. Mong quý khách thông cảm</p>
+     <p>Rất tiếc nhưng hiện tại bác sĩ/phòng khám của chúng tôi không thể xử lý yêu cầu khám bệnh của quý khách đúng hẹn. Qúy khách có thể đặt lịch khám bệnh  vào thời điểm hoặc bác sĩ khác có trên website. Mong quý khách thông cảm</p>
      <p>Lý do: Bác sĩ đã kín lịch hẹn vào thời gian này</p>
-       <div>Bạn có thể quản lý lịch khám bệnh cho cây của mình qua mục quản lý tài khoản</div>
+       <div>Bạn có thể quản lý lịch khám bệnh  của mình qua mục quản lý tài khoản</div>
          <div>Xin chân thành cảm ơn!</div>
 
          `
@@ -128,7 +128,7 @@ let getBodyHTMLEmailCancelPatientRemedy = (dataSend) => {
         <p>Bạn nhận được thư này vì đã đặt lịch khám bệnh online trên web khamchuabenhchocayvnua</p>
      <p>Bạn đã hủy lịch hẹn khám thành công! Rất mong được phục vụ bạn lần sau!</p>
      
-       <div>Bạn có thể quản lý lịch khám bệnh cho cây của mình qua mục quản lý tài khoản</div>
+       <div>Bạn có thể quản lý lịch khám bệnh  của mình qua mục quản lý tài khoản</div>
          <div>Xin chân thành cảm ơn!</div>
 
          `
@@ -155,12 +155,12 @@ let getBodyHTMLEmailReRemedy = (dataSend) => {
             `
         <h3> Xin chào ${dataSend.patientName} !</h3 >
         <p>Bạn nhận được thư này vì đã thanh toán và nhận được phiếu khám thành công khi tới cơ sở chăm sóc cây trồng</p>
-     <p>Rất tiếc!Bác sĩ của chúng tôi chưa thể khám cho cây của bạn như đúng hẹn</p>
+     <p>Rất tiếc!Bác sĩ của chúng tôi chưa thể khám  của bạn như đúng hẹn</p>
      <p>Lý do: Bác sĩ có việc đột xuất</p>
-     <p>Đừng lo lắng. Hãy giữ lại phiếu khám. Bạn có thể đăng kí lại vào thời gian khác và được khám lại cho cây miễn phí vào lần sau</p>
+     <p>Đừng lo lắng. Hãy giữ lại phiếu khám. Bạn có thể đăng kí lại vào thời gian khác và được khám lại  miễn phí vào lần sau</p>
      <p>Nếu bạn muốn hoàn tiền,hãy giữ lại phiếu khám, biên lai thu tiền, và hãy liên hệ với chúng tôi trong thời gian sớm nhất. Rất hân hạnh được phục vụ</p>
      <p>Hotline: 0981943577 - Email hỗ trợ: phuclongchausa912@gmail.com</p>
-       <div>Bạn có thể quản lý lịch khám bệnh cho cây của mình qua mục quản lý tài khoản</div>
+       <div>Bạn có thể quản lý lịch khám bệnh  của mình qua mục quản lý tài khoản</div>
          <div>Xin chân thành cảm ơn!</div>
 
          `

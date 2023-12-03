@@ -1,7 +1,6 @@
-import db from "../src/models/index.js";
-
+import db from "../models/index";
 require('dotenv').config();
-import emailService from './emailService.js';
+import emailService from './emailService';
 import { v4 as uuidv4 } from 'uuid';
 let buildUrlEmail = (doctorId, token) => {
     let result = `${process.env.URL_REACT}/verify-booking?token=${token}&doctorId=${doctorId}`
@@ -11,7 +10,7 @@ let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (!data.email || !data.doctorId || !data.timeType || !data.specialtyName || !data.fullName
-                || !data.date || !data.address || !data.image || !data.phoneNumber || !data.priceId
+                || !data.date || !data.address || !data.phoneNumber || !data.priceId
             ) {
                 resolve({
                     errCode: 1,
@@ -34,9 +33,10 @@ let postBookAppointment = (data) => {
                     defaults: {
                         email: data.email,
                         roleId: 'R3',
-                        // gender: data.selectedGender
+                        gender: data.selectedGender,
                         address: data.address,
-                        firstName: data.fullName
+                        firstName: data.fullName,
+                        birthday: data.birthday,
                     },
                 });
                 //user ở trên sau khi được gán await db.User.findOrCreate đã trở thành 1 array của sequelize
@@ -56,11 +56,11 @@ let postBookAppointment = (data) => {
                             doctorId: data.doctorId,
                             patientId: user[0].id,
                             specialtyName: data.specialtyName,
-                            plantName: data.plantName,
+                            gender: data.selectedGender,
                             timeType: data.timeType,
                             image: data.image,
                             date: data.date,
-                            birthday: data.birthdays,
+                            birthday: data.birthday,
                             token: token,
                             reasons: data.reasons,
                             phoneNumber: data.phoneNumber,
@@ -146,11 +146,11 @@ let getListBookingForPatient = (patientId, date) => {
 
 
 
-                            // include: [
-                            //     {
-                            //         model: db.Allcode, as: 'genderData', attributes:['valueEn', 'valueVi']
-                            //     }
-                            // ]
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -201,11 +201,11 @@ let getHistoryBookingForPatient = (patientId) => {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
 
-                            // include: [
-                            //     {
-                            //         model: db.Allcode, as: 'genderData', attributes:['valueEn', 'valueVi']
-                            //     }
-                            // ]
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -290,7 +290,7 @@ let cancelPatientRemedy = (data) => {
         }
     })
 }
-export default {
+module.exports = {
     postBookAppointment: postBookAppointment,
     postVerifyBookAppointment: postVerifyBookAppointment,
     getListBookingForPatient: getListBookingForPatient,

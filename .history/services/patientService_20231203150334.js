@@ -1,4 +1,4 @@
-import db from "../src/models/index";
+import db from "./";
 require('dotenv').config();
 import emailService from './emailService';
 import { v4 as uuidv4 } from 'uuid';

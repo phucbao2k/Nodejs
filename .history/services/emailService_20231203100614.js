@@ -9,11 +9,11 @@ let sendSimpleEmail = async (dataSend) => {
         service: 'gmail',
         auth: {
             user: 'baophucta2k@gmail.com',
-            pass: 'wyukrympnbozbsjn',
+            pass: 'process.env.EMAIL_APP_PASSWORD',
         },
     });
     let info = await transporter.sendMail({
-        from: '"Tạ Bảo Phúc" <baophucta2k@gmail.com>',
+        from: '"Phúc vnua" <baophucta2k@gmail.com>',
         to: dataSend.receiverEmail,
         subject: "Thông tin đặt lịch khám bệnh ",
         html: getBodyHTMLEmail(dataSend),

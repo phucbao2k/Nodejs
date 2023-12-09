@@ -1,5 +1,13 @@
 import adminService from '../services/adminService.js';
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'tabaophuc',
+});
 
+connection.connect();
 let handleGetAllBookings = async (req, res) => {
     let id = req.query.id;
     if (!id) {
@@ -37,6 +45,18 @@ let getAllBookingForAdmin = async (req, res) => {
             errMessage: 'Error from the server'
         })
     }
+}
+let searchAllBookingForAdmin = async (req, res) => {
+    const { searchTerm } = req.query;
+
+    const query = 'SELECT * FROM users WHERE id AND first LIKE ?';
+    const searchTermWithWildcard = `%${searchTerm}%`;
+
+    connection.query(query, [searchTermWithWildcard], (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+
 }
 let cancelPaidBooking = async (req, res) => {
     try {
@@ -106,7 +126,8 @@ let getSearchBookingForAdminBooking = async (req, res) => {
         })
     }
 }
-module.exports = {
+
+export default {
     getAllBookingForAdmin: getAllBookingForAdmin,
     handleDeleteBooking: handleDeleteBooking,
     handleGetAllBookings: handleGetAllBookings,
@@ -114,5 +135,6 @@ module.exports = {
     getListBookingForAdminBooking: getListBookingForAdminBooking,
     getListPaidBookingForAdminBooking: getListPaidBookingForAdminBooking,
     sendSchedule: sendSchedule,
-    getSearchBookingForAdminBooking: getSearchBookingForAdminBooking
+    getSearchBookingForAdminBooking: getSearchBookingForAdminBooking,
+    searchAllBookingForAdmin: searchAllBookingForAdmin
 }

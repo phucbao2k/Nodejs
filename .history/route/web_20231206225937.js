@@ -68,7 +68,7 @@ export function initWebRoutes(app) {
     router.get('/api/get-history-booking-for-patient', patientController.getHistoryBookingForPatient);
     //admin
     router.get('/api/get-all-booking-for-admin', adminController.getAllBookingForAdmin);
-    router.get('/api/search-all-booking-for-admin', adminController.searchAllBookingForAdmin);
+    router.get('/api/get-all-booking-for-admin', adminController.getAllBookingForAdmin);
     router.get('/api/get-all-bookings', adminController.handleGetAllBookings);
     router.delete('/api/delete-booking', adminController.handleDeleteBooking);
 //admin-booking

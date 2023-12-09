@@ -1,9 +1,8 @@
 import adminService from '../services/adminService.js';
-const mysql = require('mysql');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'phuccnttc63',
     database: 'tabaophuc',
 });
 
@@ -48,18 +47,13 @@ let getAllBookingForAdmin = async (req, res) => {
 }
 let searchAllBookingForAdmin = async (req, res) => {
     const { searchTerm } = req.query;
-    const query = ` SELECT users.*, bookings.reasons, bookings.date, bookings.birthday, bookings.statusId
-FROM users
-LEFT JOIN bookings ON users.id = bookings.patientId
-WHERE users.id LIKE '%${searchTerm}%'
-   OR users.firstName LIKE '%${searchTerm}%'
-   OR users.lastName LIKE '%${searchTerm}%';`;
+
+    const query = `SELECT * FROM bookings WHERE patientId LIKE '%${searchTerm}%'`;
 
     connection.query(query, (error, results) => {
         if (error) throw error;
         res.json(results);
     });
-
 }
 let cancelPaidBooking = async (req, res) => {
     try {
@@ -138,6 +132,5 @@ export default {
     getListBookingForAdminBooking: getListBookingForAdminBooking,
     getListPaidBookingForAdminBooking: getListPaidBookingForAdminBooking,
     sendSchedule: sendSchedule,
-    getSearchBookingForAdminBooking: getSearchBookingForAdminBooking,
-    searchAllBookingForAdmin: searchAllBookingForAdmin
+    getSearchBookingForAdminBooking: getSearchBookingForAdminBooking
 }

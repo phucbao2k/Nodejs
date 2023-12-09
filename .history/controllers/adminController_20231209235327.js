@@ -49,11 +49,11 @@ let getAllBookingForAdmin = async (req, res) => {
 let searchAllBookingForAdmin = async (req, res) => {
     const { searchTerm } = req.query;
     const query = ` SELECT users.*, bookings.reasons, bookings.date, bookings.birthday, bookings.statusId
-FROM users
-LEFT JOIN bookings ON users.id = bookings.patientId
-WHERE users.id LIKE '%${searchTerm}%'
-   OR users.firstName LIKE '%${searchTerm}%'
-   OR users.lastName LIKE '%${searchTerm}%';`;
+      FROM users
+      LEFT JOIN bookings ON users.id = bookings.patientId
+      WHERE id LIKE '%${searchTerm}%'
+         OR firstName LIKE '%${searchTerm}%'
+         OR lastName LIKE '%${searchTerm}%';`;
 
     connection.query(query, (error, results) => {
         if (error) throw error;

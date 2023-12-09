@@ -38,6 +38,7 @@ let getAllBookingForAdmin = async (req, res) => {
         })
     }
 }
+let se
 let cancelPaidBooking = async (req, res) => {
     try {
         let infor = await adminService.cancelPaidBooking(req.body);

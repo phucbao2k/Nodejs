@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import { configViewEngine } from "./src/config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';
 //import connectDB from "./src/config/connectDB.js";
-const mysql = require('mysql');
+
 import _ from "lodash";
 const paypal = require('paypal-rest-sdk');
 paypal.configure({
@@ -21,14 +21,6 @@ configViewEngine(app);
 initWebRoutes(app);
 //connectDB();
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'tabaophuc',
-});
-
-connection.connect();
 app.post('/customer-online-pay', (req, res) => {
     const create_payment_json = {
         "intent": "sale",
@@ -101,26 +93,14 @@ app.get('/cancel', (req, res) => res.send('Cancelled (Đơn hàng đã hủy)'))
 let port = process.env.PORT || 7070;
 //if port is undefined, default to current 7070
 app.get('/admin/search', (req, res) => {
-    try {
-        const { searchTerm } = req.query;
+    console.log('Received search request');  // Thêm log này
+    const { searchTerm } = req.query;
+    const query = `SELECT * FROM bookings WHERE patientId LIKE '%${searchTerm}%'`;
 
-        const query = `
-     SELECT users.*, bookings.reasons, bookings.date, bookings.birthday, bookings.statusId
-FROM users
-LEFT JOIN bookings ON users.id = bookings.patientId
-WHERE users.id LIKE '%${searchTerm}%'
-   OR users.firstName LIKE '%${searchTerm}%'
-   OR users.lastName LIKE '%${searchTerm}%';
-    `;
-
-        connection.query(query, (error, results) => {
-            if (error) throw error;
-            res.json(results);
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
 });
 app.listen(port, () => {
     //callback

@@ -1,4 +1,4 @@
-import adminService from '../services/adminService';
+import adminService from '../services/adminService.js';
 
 let handleGetAllBookings = async (req, res) => {
     let id = req.query.id;
@@ -38,6 +38,7 @@ let getAllBookingForAdmin = async (req, res) => {
         })
     }
 }
+let se
 let cancelPaidBooking = async (req, res) => {
     try {
         let infor = await adminService.cancelPaidBooking(req.body);
@@ -106,7 +107,8 @@ let getSearchBookingForAdminBooking = async (req, res) => {
         })
     }
 }
-module.exports = {
+
+export default {
     getAllBookingForAdmin: getAllBookingForAdmin,
     handleDeleteBooking: handleDeleteBooking,
     handleGetAllBookings: handleGetAllBookings,

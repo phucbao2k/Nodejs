@@ -100,27 +100,14 @@ app.get('/customer-online-pay', (req, res) => res.render('paypal.ejs'));
 app.get('/cancel', (req, res) => res.send('Cancelled (Đơn hàng đã hủy)'));
 let port = process.env.PORT || 7070;
 //if port is undefined, default to current 7070
-app.get('/admin/search', (req, res) => {
-    try {
-        const { searchTerm } = req.query;
+app.get('/api/data', (req, res) => {
+    const { searchTerm } = req.query;
+    const query = `SELECT * FROM your_table WHERE name LIKE '%${searchTerm}%'`;
 
-        const query = `
-     SELECT users.*, bookings.reasons, bookings.date, bookings.birthday, bookings.statusId
-FROM users
-LEFT JOIN bookings ON users.id = bookings.patientId
-WHERE users.id LIKE '%${searchTerm}%'
-   OR users.firstName LIKE '%${searchTerm}%'
-   OR users.lastName LIKE '%${searchTerm}%';
-    `;
-
-        connection.query(query, (error, results) => {
-            if (error) throw error;
-            res.json(results);
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
 });
 app.listen(port, () => {
     //callback

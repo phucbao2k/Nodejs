@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { configViewEngine } from "./src/config/viewEngine.js";
 import { initWebRoutes } from './route/web.js';
-//import connectDB from "./src/config/connectDB.js";
+import connectDB from "./src/config/connectDB.js";
 const mysql = require('mysql');
 import _ from "lodash";
 const paypal = require('paypal-rest-sdk');
@@ -19,16 +19,25 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 configViewEngine(app);
 initWebRoutes(app);
-//connectDB();
-
+// connectDB();
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'phuccnttc63',
     database: 'tabaophuc',
 });
 
 connection.connect();
+app.get('/search', (req, res) => {
+    const { searchTerm } = req.query;
+
+    const query = `SELECT * FROM bookings WHERE patientId LIKE '%${searchTerm}%'`;
+
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
 app.post('/customer-online-pay', (req, res) => {
     const create_payment_json = {
         "intent": "sale",
@@ -100,27 +109,15 @@ app.get('/customer-online-pay', (req, res) => res.render('paypal.ejs'));
 app.get('/cancel', (req, res) => res.send('Cancelled (Đơn hàng đã hủy)'));
 let port = process.env.PORT || 7070;
 //if port is undefined, default to current 7070
-app.get('/admin/search', (req, res) => {
-    try {
-        const { searchTerm } = req.query;
+app.get('/search', (req, res) => {
+    const { searchTerm } = req.query;
 
-        const query = `
-     SELECT users.*, bookings.reasons, bookings.date, bookings.birthday, bookings.statusId
-FROM users
-LEFT JOIN bookings ON users.id = bookings.patientId
-WHERE users.id LIKE '%${searchTerm}%'
-   OR users.firstName LIKE '%${searchTerm}%'
-   OR users.lastName LIKE '%${searchTerm}%';
-    `;
+    const query = `SELECT * FROM bookings WHERE patientId LIKE '%${searchTerm}%'`;
 
-        connection.query(query, (error, results) => {
-            if (error) throw error;
-            res.json(results);
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
 });
 app.listen(port, () => {
     //callback

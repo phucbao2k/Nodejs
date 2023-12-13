@@ -71,24 +71,24 @@ app.get('/order', function (req, res, next) {
     res.render('orderlist.pug', { title: 'Danh sách đơn hàng' })
 });
 
-app.get('/order/create_payment_url', function (req, res, next) {
-    res.render('order.pug', { title: 'Tạo mới đơn hàng', amount: 300000 })
+app.get('/create_payment_url', function (req, res, next) {
+    res.render('order.pug', { title: 'Tạo mới đơn hàng', amount: 10000 })
 });
 
-app.get('/order/querydr', function (req, res, next) {
+app.get('/querydr', function (req, res, next) {
 
     let desc = 'truy van ket qua thanh toan';
     res.render('querydr.pug', { title: 'Truy vấn kết quả thanh toán' })
 });
 
-app.get('/order/refund', function (req, res, next) {
+app.get('/refund', function (req, res, next) {
 
     let desc = 'Hoan tien GD thanh toan';
     res.render('refund.pug', { title: 'Hoàn tiền giao dịch thanh toán' })
 });
 
 
-app.post('/order/create_payment_url', async (req, res,next) => {
+app.post('/create_payment_url', async (req, res,next) => {
     try {
         // Process payment logic here
         process.env.TZ = 'Asia/Ho_Chi_Minh';
@@ -149,7 +149,7 @@ app.post('/order/create_payment_url', async (req, res,next) => {
 });
 
 
-app.get('/order/vnpay_return', function (req, res, next) {
+app.get('/vnpay_return', function (req, res, next) {
     let vnp_Params = req.query;
 
     let secureHash = vnp_Params['vnp_SecureHash'];
@@ -171,13 +171,13 @@ app.get('/order/vnpay_return', function (req, res, next) {
     if (secureHash === signed) {
         //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
 
-        res.render('success.pug', { code: vnp_Params['vnp_ResponseCode'] })
+        res.render('success', { code: vnp_Params['vnp_ResponseCode'] })
     } else {
-        res.render('success.pug', { code: '97' })
+        res.render('success', { code: '97' })
     }
 });
 
-app.get('/order/vnpay_ipn', function (req, res, next) {
+app.get('/vnpay_ipn', function (req, res, next) {
     let vnp_Params = req.query;
     let secureHash = vnp_Params['vnp_SecureHash'];
 
@@ -188,6 +188,7 @@ app.get('/order/vnpay_ipn', function (req, res, next) {
     delete vnp_Params['vnp_SecureHashType'];
 
     vnp_Params = sortObject(vnp_Params);
+
     let secretKey = "NYYZTXVDGFWGTVBZDZDRSYJIUWWTOZSN";
     let querystring = require('qs');
     let signData = querystring.stringify(vnp_Params, { encode: false });
@@ -236,7 +237,7 @@ app.get('/order/vnpay_ipn', function (req, res, next) {
     }
 });
 
-app.post('/order/querydr', function (req, res, next) {
+app.post('/querydr', function (req, res, next) {
 
     process.env.TZ = 'Asia/Ho_Chi_Minh';
     let date = new Date();
@@ -246,6 +247,7 @@ app.post('/order/querydr', function (req, res, next) {
 
     let vnp_TmnCode = "GXH3U4ZT";
     let secretKey = "NYYZTXVDGFWGTVBZDZDRSYJIUWWTOZSN";
+
     let vnp_Api = config.get('vnp_Api');
 
     let vnp_TxnRef = req.body.orderId;

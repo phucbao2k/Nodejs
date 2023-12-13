@@ -71,7 +71,7 @@ app.get('/order', function (req, res, next) {
     res.render('orderlist.pug', { title: 'Danh sách đơn hàng' })
 });
 
-app.get('/order/create_payment_url', function (req, res, next) {
+app.get('/create_payment_url', function (req, res, next) {
     res.render('order.pug', { title: 'Tạo mới đơn hàng', amount: 300000 })
 });
 
@@ -88,7 +88,7 @@ app.get('/order/refund', function (req, res, next) {
 });
 
 
-app.post('/order/create_payment_url', async (req, res,next) => {
+app.post('/create_payment_url', async (req, res,next) => {
     try {
         // Process payment logic here
         process.env.TZ = 'Asia/Ho_Chi_Minh';
@@ -246,6 +246,7 @@ app.post('/order/querydr', function (req, res, next) {
 
     let vnp_TmnCode = "GXH3U4ZT";
     let secretKey = "NYYZTXVDGFWGTVBZDZDRSYJIUWWTOZSN";
+
     let vnp_Api = config.get('vnp_Api');
 
     let vnp_TxnRef = req.body.orderId;

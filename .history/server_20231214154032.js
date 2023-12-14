@@ -266,8 +266,8 @@ app.post('/order/querydr', function (req, res, next) {
     let vnp_CreateDate = moment(date).format('YYYYMMDDHHmmss');
 
     let data = vnp_RequestId + "|" + vnp_Version + "|" + vnp_Command + "|" + vnp_TmnCode + "|" + vnp_TxnRef + "|"
-    //  + vnp_TransactionDate + "|" + vnp_CreateDate + "|"
-     + vnp_IpAddr + "|" + vnp_OrderInfo;
+     + vnp_TransactionDate + "|" + vnp_CreateDate + "|"+
+      vnp_IpAddr + "|" + vnp_OrderInfo;
 
     let hmac = crypto.createHmac("sha512", secretKey);
     let vnp_SecureHash = hmac.update(new Buffer(data, 'utf-8')).digest("hex");

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    if code == "00"
+        p(style="text-align: center")  GD thành công - Khi đến khám, hãy giữ mã giao dịch này và đưa cho giao dịch viên của chúng tôi để 
+    else
+        p(style="text-align: center; color: red") GD thất bại
+    p(style="text-align: center")
+        a.btn.btn-default(href='/order/querydr') Truy vấn kết quả thanh toán đặt lịch khám online

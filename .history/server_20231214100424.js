@@ -72,20 +72,19 @@ app.get('/order', function (req, res, next) {
 });
 
 app.get('/order/create_payment_url', function (req, res, next) {
-    const { amount } = req.params;
-    res.render('order.pug', { title: 'Tạo mới đơn hàng', amount });
+    res.render('order.pug', { title: 'Tạo mới đơn hàng', amount: 300000 })
 });
 
 app.get('/order/querydr', function (req, res, next) {
 
     let desc = 'truy van ket qua thanh toan dat lich kham online';
-    res.render('querydr.pug', { title: 'Truy vấn kết quả thanh toán đặt lịch khám online' })
+    res.render('querydr.pug', { title: 'Truy vấn kết quả thanh toán đặ' })
 });
 
 app.get('/order/refund', function (req, res, next) {
 
-    let desc = 'Hoan tien GD thanh toan dat lich kham online';
-    res.render('refund.pug', { title: 'Hoàn tiền giao dịch thanh toán đặt lịch khám online' })
+    let desc = 'Hoan tien GD thanh toan';
+    res.render('refund.pug', { title: 'Hoàn tiền giao dịch thanh toán' })
 });
 
 
@@ -255,7 +254,7 @@ app.post('/order/querydr', function (req, res, next) {
     let vnp_RequestId = moment(date).format('HHmmss');
     let vnp_Version = '2.1.0';
     let vnp_Command = 'querydr';
-    let vnp_OrderInfo = 'Truy van GD dat lich kham online ma:' + vnp_TxnRef;
+    let vnp_OrderInfo = 'Truy van GD ma:' + vnp_TxnRef;
 
     let vnp_IpAddr = req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
@@ -265,9 +264,7 @@ app.post('/order/querydr', function (req, res, next) {
     let currCode = 'VND';
     let vnp_CreateDate = moment(date).format('YYYYMMDDHHmmss');
 
-    let data = vnp_RequestId + "|" + vnp_Version + "|" + vnp_Command + "|" + vnp_TmnCode + "|" + vnp_TxnRef + "|"
-    //  + vnp_TransactionDate + "|" + vnp_CreateDate + "|"
-     + vnp_IpAddr + "|" + vnp_OrderInfo;
+    let data = vnp_RequestId + "|" + vnp_Version + "|" + vnp_Command + "|" + vnp_TmnCode + "|" + vnp_TxnRef + "|" + vnp_TransactionDate + "|" + vnp_CreateDate + "|" + vnp_IpAddr + "|" + vnp_OrderInfo;
 
     let hmac = crypto.createHmac("sha512", secretKey);
     let vnp_SecureHash = hmac.update(new Buffer(data, 'utf-8')).digest("hex");
@@ -279,8 +276,8 @@ app.post('/order/querydr', function (req, res, next) {
         'vnp_TmnCode': vnp_TmnCode,
         'vnp_TxnRef': vnp_TxnRef,
         'vnp_OrderInfo': vnp_OrderInfo,
-        // 'vnp_TransactionDate': vnp_TransactionDate,
-        // 'vnp_CreateDate': vnp_CreateDate,
+        'vnp_TransactionDate': vnp_TransactionDate,
+        'vnp_CreateDate': vnp_CreateDate,
         'vnp_IpAddr': vnp_IpAddr,
         'vnp_SecureHash': vnp_SecureHash
     };

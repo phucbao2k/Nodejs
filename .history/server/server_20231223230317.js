@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 import express from "express";
 import bodyParser from "body-parser";
-import { configViewEngine } from '../src/config/viewEngine.js';
-import { initWebRoutes } from '../route/web.js';
-import { connectDB } from '../src/config/connectDB.js';
+import { configViewEngine } from './src/config/viewEngine.js';
+import { initWebRoutes } from './route/web.js';
+import { connectDB } from './src/config/connectDB.js';
 import cors from 'cors';
 require('dotenv').config();
 let querystring = require('querystring');

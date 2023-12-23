@@ -344,7 +344,7 @@ app.post('/refund', function (req, res, next) {
         'vnp_IpAddr': vnp_IpAddr,
         'vnp_SecureHash': vnp_SecureHash
     };
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     request({
         url: vnp_Api,
         method: "POST",

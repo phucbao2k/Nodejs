@@ -30,10 +30,10 @@ module.exports = {
         "dialect": "mysql"
     },
     "production": {
-        "username": "admin",
-        "password": "phuccnttc63",
+        "username": "root",
+        "password": null,
         "database": "tabaophuc",
-        "host": "database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     }
 };

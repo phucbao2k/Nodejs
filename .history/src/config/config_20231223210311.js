@@ -31,7 +31,7 @@ module.exports = {
     },
     "production": {
         "username": "admin",
-        "password": "phuccnttc63",
+        "password": "null",
         "database": "tabaophuc",
         "host": "database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com",
         "dialect": "mysql"

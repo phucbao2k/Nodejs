@@ -16,11 +16,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Use CORS middleware
-const allowedOrigins = ['http://localhost:3000', 'https://react-web-vnua.vercel.app/'];
-
-app.use(cors({
-    origin: allowedOrigins
-}));
+app.use(cors({ origin: 'http://localhost:3000/' }));
 app.options('*', cors());
 // Configure view engine
 configViewEngine(app);
@@ -136,7 +132,7 @@ app.post('/order/create_payment_url', async (req, res,next) => {
         let signed = hmac.update(new Buffer(signData, 'utf-8')).digest("hex");
         vnp_Params['vnp_SecureHash'] = signed;
         vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false });
-        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
         // res.redirect(vnpUrl)
         res.json({ redirectUrl: vnpUrl });
     } catch (error) {
@@ -164,7 +160,7 @@ app.get('/order/vnpay_return', function (req, res, next) {
     let crypto = require("crypto");
     let hmac = crypto.createHmac("sha512", secretKey);
     let signed = hmac.update(new Buffer(signData, 'utf-8')).digest("hex");
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
     if (secureHash === signed) {
         //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
 
@@ -198,7 +194,7 @@ app.get('/order/vnpay_ipn', function (req, res, next) {
 
     let checkOrderId = true; // Mã đơn hàng "giá trị của vnp_TxnRef" VNPAY phản hồi tồn tại trong CSDL của bạn
     let checkAmount = true; // Kiểm tra số tiền "giá trị của vnp_Amout/100" trùng khớp với số tiền của đơn hàng trong CSDL của bạn
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
     if (secureHash === signed) { //kiểm tra checksum
         if (checkOrderId) {
             if (checkAmount) {
@@ -280,7 +276,7 @@ app.post('/order/querydr', function (req, res, next) {
         'vnp_IpAddr': vnp_IpAddr,
         'vnp_SecureHash': vnp_SecureHash
     };
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
     // /merchant_webapi/api/transaction
     request({
         url: vnp_Api,
@@ -348,7 +344,7 @@ app.post('/refund', function (req, res, next) {
         'vnp_IpAddr': vnp_IpAddr,
         'vnp_SecureHash': vnp_SecureHash
     };
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
     request({
         url: vnp_Api,
         method: "POST",

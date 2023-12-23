@@ -16,11 +16,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Use CORS middleware
-const allowedOrigins = ['http://localhost:3000', 'https://react-web-vnua.vercel.app/'];
-
-app.use(cors({
-    origin: allowedOrigins
-}));
+app.use(cors({ origin: 'http://localhost:3000/' }));
 app.options('*', cors());
 // Configure view engine
 configViewEngine(app);

@@ -19,8 +19,8 @@ export default (sequelize, DataTypes) => {
         as: 'priceTypeDataBooking'
       })
       Booking.belongsTo(models.Allcode, {
-        foreignKey: 'statusId', targetKey: 'keyMap',
-        as: 'statusTypeDataBooking'
+        foreignKey: 'priceId', targetKey: 'keyMap',
+        as: 'priceTypeDataBooking'
       })
        Booking.belongsTo(models.Allcode, {
         foreignKey: 'gender', targetKey: 'keyMap',

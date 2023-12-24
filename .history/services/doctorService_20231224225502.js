@@ -459,7 +459,7 @@ let getListPatientForDoctor = (doctorId, date) => {
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
-                        },
+                        }
                          {
                             model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
@@ -518,16 +518,7 @@ let getHistoryBookingForDoctor = (doctorId) => {
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
-                        },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
-
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
+                        }
                     ],
                     raw: false,
                     nest: true
@@ -652,16 +643,7 @@ let getListDoneBookingForDoctor = (statusId, date, doctorId) => {
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
-                        },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
-
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
+                        }
                     ],
                     raw: false,
                     nest: true
@@ -712,16 +694,7 @@ let getListPaidBookingForDoctor = (statusId, date, doctorId) => {
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
-                        },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
-
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
+                        }
                     ],
                     raw: false,
                     nest: true

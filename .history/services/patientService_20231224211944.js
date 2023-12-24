@@ -159,15 +159,8 @@ let getListBookingForPatient = (patientId, date) => {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
-                        },
 
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,
@@ -221,15 +214,7 @@ let getHistoryBookingForPatient = (patientId) => {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
-                        },
-
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,

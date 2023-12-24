@@ -51,7 +51,7 @@ let postBookAppointment = (data) => {
                             date: data.date,
                             patientId: user[0].id,
                             gender: data.selectedGender,
-                            patientName: data.fullName
+                            patientName: data.
                         },
                         defaults: {
                             statusId: 'S1',
@@ -67,7 +67,6 @@ let postBookAppointment = (data) => {
                             reasons: data.reasons,
                             phoneNumber: data.phoneNumber,
                             priceId: data.priceId,
-                            patientName: data.fullName
                         }
 
 
@@ -159,15 +158,8 @@ let getListBookingForPatient = (patientId, date) => {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
-                        },
 
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,
@@ -221,15 +213,7 @@ let getHistoryBookingForPatient = (patientId) => {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
-                        },
-
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,

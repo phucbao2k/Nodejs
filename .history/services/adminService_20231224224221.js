@@ -196,7 +196,7 @@ let getListBookingForAdminBooking = (statusId, date) => {
 
                         },
                         {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
+                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] },
@@ -254,10 +254,6 @@ let getListPaidBookingForAdminBooking = (statusId, date) => {
                         },
                         {
                             model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
-                        {
-                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }

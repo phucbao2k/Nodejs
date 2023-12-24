@@ -1,6 +1,6 @@
-import db from '../models/index.js';
-import { createRequire } from 'module'
-const require = createRequire(import.meta.url);
+import db from '../src/models/index.js';
+
+
 require('dotenv').config();
 import _ from 'lodash';
 const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
@@ -54,7 +54,7 @@ let getAllDoctors = () => {
 let checkRequiredFields = (inputData) => {
     let arrFields = ['doctorId', 'contentHTML', 'contentMarkdown', 'action',
         'selectedPrice', 'selectedPayment', 'selectProvince',
-        'nameClinic', 'addressClinic', 'note', 'specialtyId', 'clinicId','phoneNumber'];
+        'nameClinic', 'addressClinic', 'note', 'specialtyId', 'clinicId', 'phoneNumber'];
     let isValid = true;
     let element = '';
     for (let i = 0; i < arrFields.length; i++) {
@@ -260,7 +260,7 @@ let bulkCreateSchedule = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            if (!data.arrSchedule || !data.doctorId || !data.formatedDate || !data.priceId) {
+            if (!data.arrSchedule || !data.doctorId || !data.formatedDate) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing required fields'
@@ -275,7 +275,7 @@ let bulkCreateSchedule = (data) => {
                 }
                 //find data
                 let existing = await db.Schedule.findAll({
-                    where: { doctorId: data.doctorId, date: data.formatedDate, priceId: data.priceId},
+                    where: { doctorId: data.doctorId, date: data.formatedDate, priceId: data.priceId },
                     attributes: ['timeType', 'date', 'doctorId', 'maxNumber', 'priceId'],
                     raw: true
                 });
@@ -305,7 +305,7 @@ let bulkCreateSchedule = (data) => {
 let getScheduleByDate = (doctorId, date) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!doctorId || !date ) {
+            if (!doctorId || !date) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing required parameters'
@@ -319,7 +319,7 @@ let getScheduleByDate = (doctorId, date) => {
                     },
                     include: [
                         { model: db.Allcode, as: 'timeTypeData', attributes: ['valueEn', 'valueVi'] },
-                       
+
                         { model: db.User, as: 'doctorData', attributes: ['firstName', 'lastName'] },
                         {
                             model: db.Allcode, as: 'priceTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -442,10 +442,10 @@ let getListPatientForDoctor = (doctorId, date) => {
                         statusId: 'S2',
                         doctorId: doctorId,
                         date: date
-                    },  
-                        attributes: {
-                            exclude: ['id']
-                        },         
+                    },
+                    attributes: {
+                        exclude: ['id']
+                    },
                     include: [
                         {
                             model: db.User, as: 'patientData',
@@ -490,7 +490,7 @@ let getHistoryBookingForDoctor = (doctorId) => {
             } else {
                 let data = await db.Booking.findAll({
                     where: {
-                       
+
                         doctorId: doctorId
                     },
                     attributes: {
@@ -529,26 +529,26 @@ let getHistoryBookingForDoctor = (doctorId) => {
         }
     })
 }
-let sendRemedy = (data)=> {
-    return new Promise(async (resolve, reject)=> {
-        try{
-            if(!data.email || !data.doctorId || !data.patientId || !data.timeType
-                || !data.imgBase64 ){
-resolve({
-    errCode: 1,
-    errMessage: 'Missing required parameter'
-})
+let sendRemedy = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!data.email || !data.doctorId || !data.patientId || !data.timeType
+                || !data.imgBase64) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameter'
+                })
             } else {
                 let appointment = await db.Booking.findOne({
-where: {
-    doctorId: data.doctorId,
-    patientId: data.patientId,
-    timeType: data.timeType,
-    statusId: 'S2'
-},
-raw: false
+                    where: {
+                        doctorId: data.doctorId,
+                        patientId: data.patientId,
+                        timeType: data.timeType,
+                        statusId: 'S2'
+                    },
+                    raw: false
                 })
-                if(appointment){
+                if (appointment) {
                     appointment.statusId = 'S3';
                     await appointment.save()
                 }
@@ -560,7 +560,7 @@ raw: false
 
             }
 
-        }catch(e){
+        } catch (e) {
             reject(e);
 
         }
@@ -570,7 +570,7 @@ let cancelRemedy = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (!data.email || !data.doctorId || !data.patientId || !data.timeType
-                ) {
+            ) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing required parameter'
@@ -667,7 +667,7 @@ let getListPaidBookingForDoctor = (statusId, date, doctorId) => {
                     where: {
                         statusId: 'S5',
                         date: date,
-                        doctorId:doctorId
+                        doctorId: doctorId
                     },
                     attributes: {
                         exclude: ['id']
@@ -709,7 +709,7 @@ let sendDone = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (!data.email || !data.doctorId || !data.patientId || !data.timeType
-              ) {
+            ) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing required parameter'
@@ -728,7 +728,7 @@ let sendDone = (data) => {
                     appointment.statusId = 'S6';
                     await appointment.save()
                 }
-               
+
                 resolve({
                     errCode: 0,
                     errMessage: 'ok'

@@ -260,7 +260,7 @@ let bulkCreateSchedule = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            if (!data.arrSchedule || !data.doctorId || !data.formatedDate || !data.priceId) {
+            if (!data.arrSchedule || !data.doctorId || !data.formatedDate) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing required fields'
@@ -275,8 +275,8 @@ let bulkCreateSchedule = (data) => {
                 }
                 //find data
                 let existing = await db.Schedule.findAll({
-                    where: { doctorId: data.doctorId, date: data.formatedDate, priceId: data.priceId },
-                    attributes: ['timeType', 'date', 'doctorId', 'maxNumber', 'priceId'],
+                    where: { doctorId: data.doctorId, date: data.formatedDate },
+                    attributes: ['timeType', 'date', 'doctorId'],
                     raw: true
                 });
                 // compare data

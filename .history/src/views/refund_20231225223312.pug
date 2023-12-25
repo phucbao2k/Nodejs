@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h3=title
+    div.table-responsive
+        form(action='/order/refund', method='POST')
+            div.form-group
+                label Mã giao dịch (vnp_TxnRef):
+                input.form-control(name='orderId')
+            div.form-group
+                label Số tiền hoàn:
+                input.form-control(name='amount')
+            div.form-group
+                label Kiểu hoàn tiền (vnp_TransactionType):
+                select.form-control(name='transType')
+                    option(value='02') Hoàn toàn phần
+                    option(value='03') Hoàn một phần
+            div.form-group
+                label Thời gian tạo giao dịch * Ghi theo định dạng năm tháng ngày, viết liền không có dấu cách * (vnp_PayDate)
+                input.form-control(name='vnp_PayDate', placeholder='yyyyMMddHHmmss')
+            div.form-group
+                label User thực hiện hoàn (vnp_CreateBy)
+                input.form-control(name='user')
+            button.btn.btn-default(type='submit') Refund
+    p

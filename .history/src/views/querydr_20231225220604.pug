@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h3=title
+    div.table-responsive
+        form(action='/order/querydr', method='POST')
+            div.form-group
+                label Mã giao dịch * Copy ở trang kết quả rồi dán vào * (vnp_TxnRef)
+                input.form-control(name='orderId' placeholder='txnRef')
+           div.form-group
+              label Thời gian tạo giao dịch * Copy ở trang kết quả rồi dán vào * (vnp_PayDate)
+    input.form-control(name='vnp_PayDate', placeholder='yyyyMMddHHmmss')
+            button.btn.btn-default(type='submit') QueryDr

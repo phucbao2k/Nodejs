@@ -1,4 +1,4 @@
-import db from "../models/index.mjs";
+import db from "../src/models/index.js";
 import bcrypt from 'bcryptjs';
 //bcrypt is an npm module that simplifies tạo và băm mật khẩu
 const salt = bcrypt.genSaltSync(10);
@@ -121,13 +121,13 @@ let createNewUser = (data) => {
             let check = await checkUserEmail(data.email)
             let phoneNumber = await checkUserPhoneNumber(data.phoneNumber)
 
-            if (check === true && phoneNumber === true) {
+            if (check === true && phoneNumber === false) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Your info is already in used, Pls try again!'
                 })
 
-            } if (check === true && phoneNumber === false) {
+            } if (check === true && phoneNumber === true) {
                 //trong TH đây là tài khoản trắng(mới set roleId và một sô thông tin cơ bản qua booking modal)
                 let hashPasswordFromBcrypt = await hashUserPassword(data.password);
                 let user = await db.User.findOne({

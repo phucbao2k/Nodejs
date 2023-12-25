@@ -1,4 +1,4 @@
-import db from "../models/index";
+import db from "../src/models/index.js";
 import bcrypt from 'bcryptjs';
 //bcrypt is an npm module that simplifies tạo và băm mật khẩu
 const salt = bcrypt.genSaltSync(10);
@@ -17,7 +17,7 @@ let handleUserLogin = (email, password) => {
         try {
             let userData = {};
             let isExist = await checkUserEmail(email);
-//các câu lệnh if else lồng nhau để kiểm tra tài khoản, mật khẩu
+            //các câu lệnh if else lồng nhau để kiểm tra tài khoản, mật khẩu
             if (isExist) {
                 let user = await db.User.findOne({
                     attributes: ['id', 'email', 'roleId', 'password', 'firstName', 'lastName'],
@@ -27,7 +27,7 @@ let handleUserLogin = (email, password) => {
                 });
                 if (user) {
                     let check = await bcrypt.compareSync(password, user.password);
-                   //so sánh password vừa nhập vào và user.password đã băm trong database 
+                    //so sánh password vừa nhập vào và user.password đã băm trong database 
                     if (check) {
                         //nếu check có và đúng
                         userData.errCode = 0;
@@ -120,14 +120,14 @@ let createNewUser = (data) => {
             //kiểm tra user đã tồn tại hay chưa
             let check = await checkUserEmail(data.email)
             let phoneNumber = await checkUserPhoneNumber(data.phoneNumber)
-            
-            if (check === true && phoneNumber ===true) {
+
+            if (check === true && phoneNumber === false) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Your info is already in used, Pls try again!'
                 })
-                
-            }   if (check === true && phoneNumber === false) {
+
+            } if (check === true && phoneNumber === false) {
                 //trong TH đây là tài khoản trắng(mới set roleId và một sô thông tin cơ bản qua booking modal)
                 let hashPasswordFromBcrypt = await hashUserPassword(data.password);
                 let user = await db.User.findOne({
@@ -143,7 +143,7 @@ let createNewUser = (data) => {
                     user.lastName = data.lastName;
                     user.address = data.address;
                     user.phoneNumber = data.phoneNumber;
-                    
+
                 }
                 await user.save();
             }
@@ -258,7 +258,7 @@ let getAllCodeService = (typeInput) => {
         }
     })
 }
-module.exports = {
+export default {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,

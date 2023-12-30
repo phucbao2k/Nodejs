@@ -32,7 +32,7 @@ module.exports = {
     "production": {
         "username": "admin",
         "password": "phuccnttc63",
-        "database": "datlichenkham",
+        "database": "datlichhenkham",
         "host": "database-webkltn.c18sqym6wh15.ap-southeast-1.rds.amazonaws.com",
         "dialect": "mysql"
     }

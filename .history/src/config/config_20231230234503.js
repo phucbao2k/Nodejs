@@ -26,14 +26,14 @@ module.exports = {
         "username": "admin",
         "password": "phuccnttc63",
         "database": "datlichhenkham",
-        "host": "database-webkltn.c18sqym6wh15.ap-southeast-1.rds.amazonaws.com",
+        "host": "database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com",
         "dialect": "mysql"
     },
     "production": {
         "username": "admin",
         "password": "phuccnttc63",
         "database": "datlichhenkham",
-        "host": "database-webkltn.c18sqym6wh15.ap-southeast-1.rds.amazonaws.com",
+        "host": "database-1.cm0zuquo48wm.ap-southeast-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 };

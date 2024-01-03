@@ -1,5 +1,4 @@
-const { Op } = require('sequelize');
-const { User, Doctor_Infor, Allcode } = require('./src/models');
+import { format } from 'date-fns';
 import express from "express";
 import bodyParser from "body-parser";
 import { configViewEngine } from './src/config/viewEngine.js';
@@ -28,33 +27,24 @@ configViewEngine(app);
 
 // Initialize web routes
 initWebRoutes(app);
-
-
+'error.pug');
+// });
+app.get('/api/search-doctor', async (req, res) => {
+    try {
+        const result = await searchFunction();
+        res.json(result);
+    } catch (error) {
+        console.error('Error handling search request:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Có thể sửa '*' thành domain cụ thể 
+    res.header('Access-Control-Allow-Origin', '*'); // Có thể sửa '*' thành domain cụ thể của bạn.
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.header('Access-Control-Allow-Credentials', 'true');
     next();
 }); 
-app.post('/api/search-doctor', async (req, res) => {
-    const { searchTerm } = req.body;
-
-    const searchCondition = {
-        [Op.or]: [
-            { 'valueVi': { [Op.like]: `%${searchTerm}%` } },
-            { 'valueEn': { [Op.like]: `%${searchTerm}%` } },
-        ],
-    };
-
-    try {
-        const result = await Allcode.findAll({ where: searchCondition, raw: true });
-        res.json(result);
-    } catch (error) {
-        console.error('Error executing Sequelize query:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 connectDB()
     .then(() => {
         let port = process.env.PORT || 7070;

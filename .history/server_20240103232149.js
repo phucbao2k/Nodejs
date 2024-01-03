@@ -1,5 +1,4 @@
-const { Op } = require('sequelize');
-const { User, Doctor_Infor, Allcode } = require('./src/models');
+import { format } from 'date-fns';
 import express from "express";
 import bodyParser from "body-parser";
 import { configViewEngine } from './src/config/viewEngine.js';
@@ -38,20 +37,11 @@ app.use((req, res, next) => {
     next();
 }); 
 app.post('/api/search-doctor', async (req, res) => {
-    const { searchTerm } = req.body;
-
-    const searchCondition = {
-        [Op.or]: [
-            { 'valueVi': { [Op.like]: `%${searchTerm}%` } },
-            { 'valueEn': { [Op.like]: `%${searchTerm}%` } },
-        ],
-    };
-
     try {
-        const result = await Allcode.findAll({ where: searchCondition, raw: true });
+        const result = await searchFunction();
         res.json(result);
     } catch (error) {
-        console.error('Error executing Sequelize query:', error);
+        console.error('Error handling search request:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

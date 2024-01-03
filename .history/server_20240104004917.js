@@ -1,5 +1,4 @@
-const { Op } = require('sequelize');
-const { User, Doctor_Infor, Allcode } = require('./src/models');
+import { format } from 'date-fns';
 import express from "express";
 import bodyParser from "body-parser";
 import { configViewEngine } from './src/config/viewEngine.js';
@@ -37,7 +36,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Credentials', 'true');
     next();
 }); 
-app.post('/api/search-doctor', async (req, res) => {
+app.post('/api/search', async (req, res) => {
     const { searchTerm } = req.body;
 
     const searchCondition = {

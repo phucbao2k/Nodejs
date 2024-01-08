@@ -30,6 +30,7 @@ app.options('*', cors());
 configViewEngine(app);
 // Initialize web routes
 initWebRoutes(app);
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'); // Có thể sửa '*' thành domain cụ thể 
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');

@@ -1,4 +1,4 @@
-import db from "../src/models/";
+import db from "../src/models/index";
 require('dotenv').config();
 import emailService from './emailService';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,7 +10,7 @@ let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (!data.email || !data.doctorId || !data.timeType || !data.specialtyName || !data.fullName
-                || !data.date || !data.address || !data.phoneNumber || !data.priceId
+                || !data.date || !data.phoneNumber || !data.priceId || !data.selectedGender
             ) {
                 resolve({
                     errCode: 1,
@@ -49,7 +49,9 @@ let postBookAppointment = (data) => {
                         where: {
                             timeType: data.timeType,
                             date: data.date,
-                            patientId: user[0].id
+                            patientId: user[0].id,
+                            gender: data.selectedGender,
+                            patientName: data.fullName
                         },
                         defaults: {
                             statusId: 'S1',
@@ -65,6 +67,7 @@ let postBookAppointment = (data) => {
                             reasons: data.reasons,
                             phoneNumber: data.phoneNumber,
                             priceId: data.priceId,
+                            patientName: data.fullName
                         }
 
 
@@ -142,22 +145,24 @@ let getListBookingForPatient = (patientId, date) => {
                     include: [
                         {
                             model: db.User, as: 'patientData',
-                            attributes: ['email', 'firstName', 'address'],
-
-
-
-                            include: [
-                                {
-                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
-                                }
-                            ]
+                            attributes: ['email', 'firstName', 'address'],           
+                        },
+                        {
+                            model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
+                        {
+                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
+                        },
 
+                        {
+                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
+
+                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,
@@ -211,7 +216,15 @@ let getHistoryBookingForPatient = (patientId) => {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
+                        {
+                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
+                        },
+
+                        {
+                            model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
+
+                        },
                         { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,

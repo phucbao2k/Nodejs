@@ -92,19 +92,16 @@ let getAllBookings = (bookingId) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes:['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
 
                         },
-                        {
-                            model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
-
-                        },
-
                         {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
@@ -186,9 +183,11 @@ let getListBookingForAdminBooking = (statusId, date) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes:['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -198,12 +197,12 @@ let getListBookingForAdminBooking = (statusId, date) => {
                             model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-
                         {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
+                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] },
+
                     ],
                     raw: false,
                     nest: true
@@ -245,9 +244,11 @@ let getListPaidBookingForAdminBooking = (statusId, date) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes:['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -257,7 +258,6 @@ let getListPaidBookingForAdminBooking = (statusId, date) => {
                             model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-
                         {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
@@ -339,9 +339,11 @@ let getSearchBookingForAdminBooking = (phoneNumber) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -351,12 +353,12 @@ let getSearchBookingForAdminBooking = (phoneNumber) => {
                             model: db.Allcode, as: 'priceTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-
                         {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
+                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] },
+
                     ],
                     raw: false,
                     nest: true

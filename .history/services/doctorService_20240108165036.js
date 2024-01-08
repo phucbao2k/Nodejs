@@ -664,9 +664,11 @@ let getListDoneBookingForDoctor = (statusId, date, doctorId) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -681,7 +683,6 @@ let getListDoneBookingForDoctor = (statusId, date, doctorId) => {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,
                     nest: true
@@ -722,9 +723,11 @@ let getListPaidBookingForDoctor = (statusId, date, doctorId) => {
                         {
                             model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address'],
-                        },
-                        {
-                            model: db.Allcode, as: 'genderDataBooking', attributes: ['valueEn', 'valueVi']
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
@@ -739,7 +742,6 @@ let getListPaidBookingForDoctor = (statusId, date, doctorId) => {
                             model: db.Allcode, as: 'statusTypeDataBooking', attributes: ['valueEn', 'valueVi']
 
                         },
-                        { model: db.User, as: 'doctorNameData', attributes: ['firstName', 'lastName'] }
                     ],
                     raw: false,
                     nest: true

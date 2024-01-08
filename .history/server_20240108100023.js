@@ -28,6 +28,7 @@ app.use('/api', searchDoctorAPI);
 app.options('*', cors());
 // Configure view engine
 configViewEngine(app);
+
 // Initialize web routes
 initWebRoutes(app);
 

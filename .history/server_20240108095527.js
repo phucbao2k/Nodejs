@@ -28,6 +28,7 @@ app.use('/api', searchDoctorAPI);
 app.options('*', cors());
 // Configure view engine
 configViewEngine(app);
+
 // Initialize web routes
 initWebRoutes(app);
 
@@ -122,6 +123,7 @@ app.post('/api/get-doctors-by-position', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 
 

@@ -196,7 +196,7 @@ let sendAttachment = async (dataSend) => {
                 }
             });
             let info = await transporter.sendMail({
-                from: '"Team Tạ Bảo Phúc" <baophucta2k@gmail.com>',
+                from: '" Tạ Bảo Phúc" <baophucta2k@gmail.com>',
                 to: dataSend.email,
                 subject: "Dear",
                 html: getBodyHTMLEmailRemedy(dataSend),
@@ -228,7 +228,7 @@ let sendCancelAttachment = async (dataSend) => {
                 }
             });
             let info = await transporter.sendMail({
-                from: '"Team Tạ Bảo Phúc" <baophucta2k@gmail.com>',
+                from: '" Tạ Bảo Phúc" <baophucta2k@gmail.com>',
                 to: dataSend.email,
                 subject: "Dear",
                 html: getBodyHTMLEmailCancelRemedy(dataSend)
@@ -253,7 +253,7 @@ let sendCancelPatientAttachment = async (dataSend) => {
                 }
             });
             let info = await transporter.sendMail({
-                from: '"Team Tạ Bảo Phúc" <baophucta2k@gmail.com>',
+                from: '"Tạ Bảo Phúc" <baophucta2k@gmail.com>',
                 to: dataSend.email,
                 subject: "Dear",
                 html: getBodyHTMLEmailCancelPatientRemedy(dataSend)
@@ -278,7 +278,7 @@ let sendReBooking = async (dataSend) => {
                 }
             });
             let info = await transporter.sendMail({
-                from: '"Team Tạ Bảo Phúc" <baophucta2k@gmail.com>',
+                from: '"Tạ Bảo Phúc" <baophucta2k@gmail.com>',
                 to: dataSend.email,
                 subject: "Dear",
                 html: getBodyHTMLEmailReRemedy(dataSend)
